@@ -1,0 +1,18 @@
+syntax = "proto3";
+package com.example.rxjavatest;
+//
+import "BaseType.proto";
+
+
+service PythonCrossAndroid {
+  rpc invokeMethod (Requester) returns (Responder) {}
+  rpc findClass (Requester) returns (Responder) {}
+  rpc creteInstance(Requester) returns (Responder){}
+  rpc setAttribute(Requester) returns (VOID){}
+  rpc getAttribute(Requester) returns (AttributeValueRespose){}
+}
+
+
+message AttributeValueRespose{
+  repeated ANY args = 1;
+}

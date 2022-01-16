@@ -1,0 +1,88 @@
+syntax = "proto3";
+package com.example.rxjavatest;
+option java_package = "com.example.rxjavatest";
+
+service BaseType{
+
+}
+
+message STRING{
+    string text = 1;
+}
+
+message INT{
+    int32 value = 1;
+}
+
+message FLOAT{
+    float value = 1;
+}
+
+message DOUBLE{
+    double value = 1;
+}
+
+message CHAR{
+    bytes value = 1;
+}
+
+message LONG{
+    int64 value = 1;
+
+}
+
+message Requester {
+  optional string className = 1;
+  optional string objectHashCode = 2;
+  optional string methodName = 3;
+  repeated ANY args = 4;
+  optional string attribute_name = 5;
+  optional string error = 6;
+}
+message Responder {
+  optional string className = 1;
+  optional int32 objectHashCode = 2;
+  bool isClass = 3;
+  optional string error = 4;
+}
+message VOID{
+}
+
+message ANY{
+  oneof AnyType{
+    double double = 1; //proto3版本中，首成员必须为0，成员不应有相同的值
+    float float = 2;
+    int32 int32 = 3;
+    int64 int64 = 4;
+    uint32 uint32 = 5;
+    uint64 uint64 = 6;
+    sint32 sint32 = 7;
+    sint64 sint64 = 8;
+    fixed32 fixed32 = 9;
+    fixed64 fixed64 = 10;
+    sfixed32 sfixed32 = 11;
+    sfixed64 sfixed64 = 12;
+    bool bool = 13;
+    string string = 14;
+    bytes bytes = 15;
+    Responder responder = 16;
+  }
+
+//  enum AnyType{
+//    double = 0; //proto3版本中，首成员必须为0，成员不应有相同的值
+//    float = 1;
+//    int32 = 2;
+//    int64 = 3;
+//    unit32 = 4;
+//    uint64 = 5;
+//    sint32 = 6;
+//    sint64 = 7;
+//    fixed32 = 8;
+//    fixed64 = 9;
+//    sfixed32 = 10;
+//    sfixed64 = 11;
+//    bool = 12;
+//    string = 13;
+//    bytes = 14;
+//  }
+}

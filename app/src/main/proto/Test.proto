@@ -1,0 +1,25 @@
+syntax = "proto3";
+package com.example.rxjavatest;
+import "BaseType.proto";
+option java_package = "com.example.rxjavatest";
+
+
+
+
+service ProtoTest {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc TestMethod(STRING) returns (INT){}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+
+message HelloReply {
+  string message = 1;
+}
+
+message Hello {
+  string message = 1;
+}
