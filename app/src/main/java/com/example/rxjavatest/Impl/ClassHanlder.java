@@ -8,6 +8,7 @@ import com.example.rxjavatest.PythonCrossAndroidOuterClass;
 import com.google.common.primitives.Bytes;
 import com.google.protobuf.ByteString;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -140,6 +141,28 @@ public class ClassHanlder extends AbstratMethodHandler{
                 return getResponder(null, e);
             }
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public boolean hasAttribute(BaseTypeOuterClass.Requester requester){
+        Log.v(TAG, "hasAttribute");
+         Class<?> clazz = findClass(requester.getClassName());
+         if (clazz != null){
+             Field[] fields = clazz.getDeclaredFields();
+             if (fields.length > 0){
+                 String attributeName = requester.getAttributeName();
+                 Log.v(TAG, String.format("find attributeName %s", attributeName));
+                 List<Field> fieldList = Arrays.stream(fields).filter(field -> field.getName().equals(requester.getAttributeName())).collect(Collectors.toList());
+                 if (fieldList.size() > 0){
+                     return true;
+                 }else {
+                     Log.v(TAG, "fieldList size is zero");
+                 }
+             }
+         }else {
+             Log.e(TAG, "class is null");
+         }
+         return false;
     }
 
     public Object[] argsTypeConversion(Class<?>[] classes, Object[] args){

@@ -41,6 +41,6 @@ public abstract class AbstratMethodHandler {
         } else if (currentClass.equals(char.class) && targetClass.equals(Byte.class)){
 
         }
-
+        return null;
     }
 }

@@ -10,6 +10,7 @@ service PythonCrossAndroid {
   rpc creteInstance(Requester) returns (Responder){}
   rpc setAttribute(Requester) returns (VOID){}
   rpc getAttribute(Requester) returns (AttributeValueRespose){}
+  rpc hasAttribute(Requester) returns (BOOLEAN){}
 }
 
 

@@ -22,4 +22,20 @@ public class PythonCrossAndroidImpl extends PythonCrossAndroidGrpc.PythonCrossAn
         long endTime = System.currentTimeMillis();
         Log.v(TAG, String.format("耗时:%d毫秒", endTime - startTime));
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    public void findClass(BaseTypeOuterClass.Requester request, StreamObserver<BaseTypeOuterClass.Responder> responseObserver) {
+        BaseTypeOuterClass.Responder responder = ClassHanlder.getInstance().findClass(request);
+        responseObserver.onNext(responder);
+        responseObserver.onCompleted();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    public void hasAttribute(BaseTypeOuterClass.Requester request, StreamObserver<BaseTypeOuterClass.BOOLEAN> responseObserver) {
+        BaseTypeOuterClass.BOOLEAN.Builder builder = BaseTypeOuterClass.BOOLEAN.newBuilder().setValue(ClassHanlder.getInstance().hasAttribute(request));
+        responseObserver.onNext(builder.build());
+        responseObserver.onCompleted();
+    }
 }

@@ -28,15 +28,19 @@ message CHAR{
 
 message LONG{
     int64 value = 1;
-
 }
+
+message BOOLEAN{
+    bool value = 1;
+}
+
 
 message Requester {
   optional string className = 1;
   optional string objectHashCode = 2;
   optional string methodName = 3;
   repeated ANY args = 4;
-  optional string attribute_name = 5;
+  optional string attributeName = 5;
   optional string error = 6;
 }
 message Responder {
