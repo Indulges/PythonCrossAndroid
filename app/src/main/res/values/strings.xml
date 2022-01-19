@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RxjavaTest</string>
+    <string name="accessibility_service_name">UiAutoTest</string>
 </resources>

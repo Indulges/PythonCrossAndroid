@@ -1,0 +1,9 @@
+syntax = "proto3";
+package com.example.rxjavatest;
+import "BaseType.proto";
+
+service UiService {
+  rpc clickByText(STRING) returns (BOOLEAN){}
+  rpc clickHome(VOID) returns (BOOLEAN) {}
+  rpc clickBack(VOID) returns (BOOLEAN) {}
+}
